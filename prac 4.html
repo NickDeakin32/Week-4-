@@ -1,0 +1,103 @@
+
+<html>
+
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<title> Prac 4 </title>
+
+<body>
+<h2> Declarative Rendering </h2>
+
+<div id="MyFirstVue">
+  {{ message }}
+</div>
+
+<div id="DisplayTIme">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+
+<script>
+
+var MyFirstVue = new Vue({
+  el: '#MyFirstVue',
+  data: {
+    message: 'Hello! This is my first Vue Program!',
+  }
+})
+
+var DisplayTime = new Vue({
+  el: '#DisplayTime',
+  data: {
+    message: 'You loaded this page on ' + new Date().toLocaleString()
+  }
+})
+
+</script>
+
+<h2> Conditions and Loops - (V-if and V-Else) </h2>
+<div id="app-3">
+  <span v-if="seen">Now you see me and </span>
+  <span v-else=>But you'll never find this message...</span>
+  <span v-show="seen">you found my hidden message!</span>
+</div>
+
+<script>
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+</script>
+
+<h2> Conditions and Loops - (V-for) </h2>
+
+<div id="MySIT120ToDo">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.value }}
+    </li>
+  </ol>
+</div>
+
+<script>
+var MySIT120ToDo = new Vue({
+  el: '#MySIT120ToDo',
+  data: {
+    todos: [
+      { value: 'Finish SIT120 Prac 4' },
+      { value: 'Study Vue' },
+      { value: 'Submit Assignment' }
+    ]
+  }
+})
+</script>
+
+<h2> Handling User Input </h2>
+
+<div id="Reversing">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+
+<script> 
+var Reversing = new Vue({
+  el: '#Reversing',
+  data: {
+    message: 'This is a User Input function in Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+
+</body>
+</html>
